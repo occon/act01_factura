@@ -4,20 +4,20 @@
 
 using namespace std;
 
-class vendedor {
+class vendedor{
     public:
         string cve_vendedor;
         string nombre;
 };
 
-class inventario {
+class inventario{
     public:
         string cve_articulo;
         string descripcion;
         double precio;
 };
 
-class factura {
+class factura{
     public:
         string no_Factura;
         string cve_vendedor;
@@ -58,9 +58,29 @@ int main(){
     inventario i1 = {"i500", "Tornillo sin fin", 10.00};
     inventario i2 = {"i100", "Pinon Cremallera", 10.00};
     inventario i3 = {"i200", "Angulo de Ackerman", 10.00};
-
     arreglo_inventario[0] = i1;
     arreglo_inventario[1] = i2;
     arreglo_inventario[2] = i3;
 
+    // facturas
+    int contador_factura = 0;
+    genera_factura(contador_factura, arreglo_factura, v1, i2, 32);
+
+    // imprimir facturas
+    cout << "Facturas Generadas" << endl;
+    cout << "No." << "\t\t" << "Vendedor" << "\t" << "Codigo Art.\t" << "Articulo" << endl;
+
+    for (int j = 0; j <= contador_factura; j++){
+        for (int k = 0; k < sizeof(arreglo_inventario)/sizeof(arreglo_inventario[0]); k++){
+            if (arreglo_factura[j].cve_articulo == arreglo_inventario[k].cve_articulo)
+                nombre_articulo = arreglo_inventario[k].descripcion;
+        }
+
+        cout << arreglo_factura[j].no_Factura << "\t"
+        << arreglo_factura[j].cve_vendedor << "\t\t"
+        << arreglo_factura[j].cve_articulo << "\t\t"
+        << nombre_articulo << endl;
+    }
+    
+    return 0;
 }
