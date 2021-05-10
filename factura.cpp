@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ctime>
+#include <windows.h>
 
 using namespace std;
 
@@ -21,6 +23,23 @@ class factura {
         string cve_vendedor;
         string cve_articulo;
         int cantidad;
+};
+
+string GETDATE(){
+    char out[14];
+    time_t t = time(NULL);
+    strftime(out, sizeof(out), "%Y%m%d%H%S", localtime(&t));
+    Sleep(2000);  // pauses for 10 seconds
+    return out;
+};
+
+void genera_factura(int i, factura arreglo_factura[], vendedor v1, inventario i2, int cant){
+    factura f1;
+    f1.cve_vendedor = v1.cve_vendedor;
+    f1.cve_articulo = i2.cve_articulo;
+    f1.cantidad = cant;
+    f1.no_Factura = "F" + GETDATE();
+    arreglo_factura[i] = f1;
 };
 
 int main(){
