@@ -72,12 +72,21 @@ int main(){
     Vendedor vendedor1;
     Vendedor vendedor2("V1523", "Juan Martinez");
     Inventario inventario1;
-    Inventario inventario2("I0941", "iPhone 12", 224);
-    cout << vendedor1.showClave() << " " << vendedor1.showNombre() << endl;
-    cout << vendedor2.showClave() << " " << vendedor2.showNombre() << endl;
+    Inventario inventario2("I0941", "iPhone 12", 22499);
     
-    cout << inventario1.showClave() << " " << inventario1.showDescripcion() << " " << inventario1.showPrecio() << endl;
-    cout << inventario2.showClave() << " " << inventario2.showDescripcion() << " " << inventario2.showPrecio() << endl;
+    cout << "Vendedores" << endl;
+    cout << "Clave de vendedor: " << vendedor1.showClave() << endl;
+    cout << "Nombre: " << vendedor1.showNombre() << endl;
+    cout << "Clave de vendedor: " << vendedor2.showClave() << endl;
+    cout << "Nombre: " << vendedor2.showNombre() << endl << endl;
+    
+    cout << "Inventario" << endl;
+    cout << "Clave de producto: " << inventario1.showClave() << endl;
+    cout << "Descripcion: " << inventario1.showDescripcion() << endl;
+    cout << "Precio: $" << inventario1.showPrecio() << endl;
+    cout << "Clave de producto: " << inventario2.showClave() << endl;
+    cout << "Descripcion: " << inventario2.showDescripcion() << endl;
+    cout << "Precio: $" << inventario2.showPrecio() << endl;
     return 0;
 }
 
