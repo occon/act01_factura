@@ -1,8 +1,8 @@
 # Actividad 01 - Factura
 ## Intengrantes
-Lydia Delgado Uriarte, A01740532
-
 Hugo Edgar Palomares Estrella, A017414537
+
+Lydia Delgado Uriarte, A01740532
 
 ## Profesor
 Abraham Nezahualcoyotl Aldaco Gastélum, Ph.D. 
