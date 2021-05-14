@@ -1,5 +1,5 @@
 # Actividad 01 - Factura
-## Intengrantes
+## Integrantes
 Hugo Edgar Palomares Estrella, A017414537
 
 Lydia Delgado Uriarte, A01740532
