@@ -6,15 +6,62 @@ using namespace std;
 
 class Vendedor{
     public:
+        Vendedor(); //default constructor
+        Vendedor(string clave, string nombre);
+        void setVendedor(string clave, string nombre);
+        string showClave();
+        string showNombre();
+    private:
         string cve_vendedor;
-        string nombre;
+        string Nombre;
 };
 
 class Inventario{
     public:
+        Inventario();
+        Inventario(string clave, string descripcion, double precio);
+        void setInventario(string clave, string descripcion, double precio);
+        void agregar_inventario(string array, int n);
+        string showClave();
+        string showDescripcion();
+        double showPrecio();
+    private:
         string cve_articulo;
-        string descripcion;
-        double precio;
+        string Descripcion;
+        double Precio;
+};
+
+Vendedor::Vendedor(){
+    cve_vendedor = "vacante";
+    Nombre = "nadie";
+};
+
+void Vendedor::setVendedor(string clave, string nombre){
+    cve_vendedor = clave;
+    Nombre = nombre;
+};
+
+Vendedor::Vendedor(string clave, string nombre){
+    cve_vendedor = clave;
+    Nombre = nombre;
+};
+
+Inventario::Inventario(){
+    cve_articulo = "ninguno";
+    Descripcion = "nohay";
+    Precio = 0.0;
+};
+
+void Inventario::setInventario(string clave, string descripcion, double precio){
+    cve_articulo = clave;
+    Descripcion = descripcion;
+    Precio = precio;
+};
+
+Inventario::Inventario(string clave, string descripcion, double precio){
+    cve_articulo = clave;
+    Descripcion = descripcion;
+    Precio = precio;
 };
 
 class Factura{
@@ -35,12 +82,38 @@ string GETDATE(){
 
 void genera_factura(int i, Factura arreglo_factura[], Vendedor v1, Inventario i2, int cant){
     Factura f1;
-    f1.cve_vendedor = v1.cve_vendedor;
-    f1.cve_articulo = i2.cve_articulo;
+    f1.cve_vendedor = v1.showClave();
+    f1.cve_articulo = i2.showClave();
     f1.cantidad = cant;
     f1.no_Factura = "F" + GETDATE();
     arreglo_factura[i] = f1;
 };
+
+void agregar_inventario(Inventario arreglo_inventario[], int n){
+    arreglo_inventario[n] = arreglo_inventario[n];
+    n++;
+};
+
+void agregar_articulo(Inventario arreglo_inventario[], int n){
+    string clave;
+    string descripcion;
+    double precio;
+
+    cin >> clave;
+    cin >> descripcion;
+    cin >> precio;
+    
+    Inventario inventarioN(clave, descripcion, precio);
+    inventarioN.agregar_inventario(arreglo_inventario[], n);
+    arreglo_inventario[n] = inventarioN;    
+};
+
+string Vendedor::showClave(){return cve_vendedor;};
+string Vendedor::showNombre(){return Nombre;};
+
+string Inventario::showClave(){return cve_articulo;};
+string Inventario::showDescripcion(){return Descripcion;};
+double Inventario::showPrecio(){return Precio;};
 
 int main(){
     Vendedor arreglo_vendedor[2];
@@ -72,8 +145,8 @@ int main(){
 
     for (int j = 0; j <= contador_factura; j++){
         for (int k = 0; k < sizeof(arreglo_inventario)/sizeof(arreglo_inventario[0]); k++){
-            if (arreglo_factura[j].cve_articulo == arreglo_inventario[k].cve_articulo)
-                nombre_articulo = arreglo_inventario[k].descripcion;
+            if (arreglo_factura[j].cve_articulo == arreglo_inventario[k].showClave())
+                nombre_articulo = arreglo_inventario[k].showDescripcion();
         }
 
         cout << arreglo_factura[j].no_Factura << "\t"
@@ -82,5 +155,7 @@ int main(){
         << nombre_articulo << endl;
     }
     
+    agregar_inventario(arreglo_inventario[], nInventario);
+
     return 0;
 }
