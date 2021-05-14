@@ -21,9 +21,9 @@ class Inventario{
         Inventario(string clave, string descripcion, double precio);
         void setInventario(string clave, string descripcion, double precio);
         void agregar_inventario(string array, int n);
-        string showClave(){return cve_articulo;};
-        string showDescripcion(){return Descripcion;};
-        double showPrecio(){return Precio;};
+        string showClave();
+        string showDescripcion();
+        double showPrecio();
         void imprimeI();
     private:
         string cve_articulo;
@@ -46,19 +46,12 @@ Vendedor::Vendedor(string clave, string nombre){
     Nombre = nombre;
 };
 
-void Vendedor::imprimeV(){
-    cout << "Nombre vendedor " << Nombre << endl << "Clave Vendedor: " << cve_vendedor<< endl;
-}
 Inventario::Inventario(){
     cve_articulo = "ninguno";
     Descripcion = "nohay";
     Precio = 0.0;
 };
 
-void Inventario::imprimeI(){
-    cout << "Clave artículo: " << cve_articulo << endl << "Descripcion artículo: " << Descripcion<< endl;
-    cout << "Precio: " << Precio << endl;
-}
 void Inventario::setInventario(string clave, string descripcion, double precio){
     cve_articulo = clave;
     Descripcion = descripcion;
@@ -95,37 +88,19 @@ std::string GETDATE() {
     return str;
 };
 
-//Funciones
-void AgregarVendedor(int cantVen, Vendedor arreglo_vendedor[]){
-    string clave, nombre;
-    int i=cantVen;
-    cout << "Ingresa el nombre del vendedor: ";
-    cin >> nombre;
-    cout << "Ingresa la clave: ";
-    cin >> clave;
-    arreglo_vendedor[i].setVendedor(clave, nombre);
-    cantVen++;
-    cout << endl;
-}
-
-
-void ImprimirVendedores(int cantVen, Vendedor arreglo_vendedor[]){
-    cout << "Vendedores registrados: " << cantVen << endl;
-    for (int i=0; i<cantVen; i++){
-        arreglo_vendedor[i].imprimeV();
-        cout << endl;
-    }
-}
-
-
 void genera_factura(int i, Factura arreglo_factura[], Vendedor v1, Inventario i2, int cant){
-    Factura f1;/*
-    f1.cve_articulo=i2.showClave();
+    Factura f1;
+    f1.cve_vendedor = v1.showClave();
     f1.cve_articulo = i2.showClave();
-    f1.cantidad = cant;*/
+    f1.cantidad = cant;
     f1.no_Factura = "F" + GETDATE();
     arreglo_factura[i] = f1;
 }
+
+
+string Inventario::showClave(){return cve_articulo;};
+string Inventario::showDescripcion(){return Descripcion;};
+double Inventario::showPrecio(){return Precio;};
 
 int main(){
     Vendedor arreglo_vendedor[100];
@@ -169,5 +144,5 @@ int main(){
             << arreglo_factura[j].cve_articulo << "\t\t"
             << nombre_articulo << endl;
         }
-
+    return 0;
 }
